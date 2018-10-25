@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  db:
+     image: mysql:5.7
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+
+  wordpress: 
+    build: ./wordpressDebug
+    image: revfrontwordpressdebug
+    depends_on:
+      - db
+    ports:
+      - 8081:80
+    volumes:
+      - ./wpTheme:/var/www/html/wp-content/themes/rev
+#     Uncomment the following line, to debug wordpress php code    
+#      - ./filesForDebug:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      XDEBUG_CONFIG: remote_host=host.docker.internal
