@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "pretty": true,
+        "outDir": "./wpTheme/dist",
+        "sourceMap": true,
+        "baseUrl": "./src"
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+  }
